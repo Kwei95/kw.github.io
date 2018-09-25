@@ -1,0 +1,166 @@
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,div,
+form,fieldset,legend,button,input,textarea,th,td ,button,input,select,textarea{
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+	font-size: 14px;
+	font-family: "PingFang SC","Microsoft Yahei", "Hiragino Sans GB",arial,sans-serif;
+	-webkit-text-size-adjust: 100%;			
+}
+h1,h2,h3,h4,h5,h6{
+	font-weight:normal;
+}
+a {
+	text-decoration: none;
+}
+
+em {
+	font-style: normal;
+}
+
+ul,ol{
+	list-style:none;
+}
+
+img {
+	border: 0;
+	vertical-align: middle;
+	outline: none;
+}
+button, input {
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.clearfix:before,
+.clearfix:after {
+	display: table;
+	line-height: 0;
+	content: "";
+}
+
+.clearfix:after {
+	clear: both;
+}
+.clearfix {
+	*zoom: 1;
+}
+/*QQ浏览器图片收藏按钮*/
+#qb_collection_img_mask{
+	display: none!important;
+}
+
+body{
+	max-width: 1920px;
+	margin: 0 auto;
+}
+.container{
+	width: 1200px;
+	margin: 0 auto;
+}
+.content{
+	margin-top: 100px;
+}
+
+/* 头部 */
+.header{
+	position: fixed;
+	left: 0;
+	top:0;
+	width: 100%;
+	height: 100px;
+	background: #ffffff;
+	z-index: 100;
+}
+.header .logo{
+	width: 260px;
+	line-height: 100px;
+}
+.header .logo img{
+	max-width: 100%;
+}
+.header .nav{
+	position: relative;
+}
+.header .nav li{	
+	float: left;
+	line-height: 100px;
+	margin-left: 50px;
+}
+.header .nav li a{
+	font-size: 16px;
+	color: #333333;
+}
+
+.header .sub_nav{
+	position: absolute;
+	display: none;
+	top: 100px;
+	left: -110px;
+	padding: 10px 20px;
+	background: #ffffff;
+	box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.2);
+	z-index: 10;
+}
+
+.header .sub_nav .item{
+	float: left;
+	margin: 0 20px 0 10px;
+	white-space:nowrap;
+}
+.header .sub_nav .item h5{
+	font-size: 18px;
+	font-weight: bold;
+	color:#333333;
+	padding-left:10px; 
+	margin-bottom: 12px;
+}
+.header .sub_nav .item a{
+	display: block;
+	line-height: 26px;
+	padding: 0 10px;
+	margin-bottom: 8px
+}
+.header .sub_nav .item a:hover{
+	background: #ff6200;
+	color: #ffffff;
+}
+
+
+
+
+.footer .box{
+	width: 100%;
+	padding: 40px 0 30px 0;
+	background: #091725;	
+	text-align: center;
+}
+
+.footer p{
+	font-size: 16px;
+	color: #ffffff;
+	margin-bottom: 10px;
+}
+.footer .inside{
+	background: #ffffff;
+}
+.footer .inside p{
+	color: #091725;
+}

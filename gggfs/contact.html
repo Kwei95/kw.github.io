@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/inside.css">
+    <script src="js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+    <div class="content contact">
+        <div class="container">
+            <div class="navigation">
+                <div class="txt">
+                    <h4>联系我们</h4>
+                    <p>Contact us</p>
+                </div>
+            </div>
+            <div class="contact_box  clearfix">
+                <div class="fl">
+                    <h4>新西兰总部</h4>
+                    <p>地址：Unit A, 5 Piermark Dr, Albany, Auckland, 0632 , New Zealand</p>
+                    <p>电话：+64 (0)508 266 733</p>
+                    <p>电邮：info@ggfsg.com</p>
+                    <img src="images/inside/map.jpg" alt="">
+                </div>
+                <div class="fr">
+                    <h4>联系我们</h4>
+                    <div class="box">
+                        <div class="item clearfix">
+                            <input type="text" placeholder="姓名" name="username" class="username">
+                            <input type="text" placeholder="电话" name="phone" class="phone">
+                        </div>
+                        <div class="item">
+                            <input type="text" name="email" placeholder="电子邮箱">
+                        </div>
+                        <div class="item">
+                            <input type="text" name="company" placeholder="公司名称">
+                        </div>
+                        <div class="item">
+                            <input type="text" name="com_type" placeholder="公司性质">
+                        </div>
+                        <div class="item">
+                            <input type="text" name="about" placeholder="您是怎么了解到金盛金融的？">
+                        </div>
+                        <div class="item">
+                            <textarea name="" name="msg" placeholder="信息" rows="12"></textarea>
+                        </div>
+                        <a href="javascript:;">提交</a>
+                    </div>
+                </div>
+                <script>
+                    $(".contact_box .fr a").click(function(){
+                        console.log("1")
+                        if($.trim($('input[name="username"]').val())==''){
+                            alert("姓名不能为空");
+                            return false
+                        }
+                        if($.trim($('input[name="phone"]').val())==''){
+                            alert("电话不能为空");
+                            return false
+                        }
+                        
+                        if($.trim($('input[name="email"]').val())==''){
+                            alert("邮箱不能为空");
+                            return false
+                        }
+                        
+                        if(!/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test($('input[name="email"]').val())){
+                            alert("邮箱格式不正确");
+                            return false
+                        }
+                        if($.trim($('input[name="company"]').val())==''){
+                            alert("公司不能为空");
+                            return false
+                        }
+                        if($.trim($('input[name="msg"]').val())==''){
+                            alert("信息不能为空");
+                            return false
+                        }
+
+                        $.ajax({
+                            type:"post",
+                            url:'',
+                            dataType:"json",
+                            success:function(){
+
+                            },
+                        })
+
+
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
