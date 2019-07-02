@@ -1,9 +1,7 @@
 test branch
 main branch 111
 111
-<<<<<<< HEAD
-11222
-111231111
-=======
 11123456
->>>>>>> 15cd6b30fcf19a6ff6aaf603c22fdf39c2dd7d07
+12
+11
+1111
