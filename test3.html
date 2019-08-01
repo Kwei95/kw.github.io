@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var res = {
+      "code": 200,
+      "msg": "直播获取成功",
+      "time": "1564557713",
+      "data":
+      {
+        "socketDomain": "",
+        "socketIp": "111.230.114.50",
+        "socketPort": 9000,
+        "socketPortWss": 9001,
+        "liveId": 95786,
+        "courseName": "整装待发",
+        "className": "0731课程自测02",
+        "startTime": 1564553100,
+        "endTime": 1564557300,
+        "teacherType": "1000",
+        "teacherId": 224,
+        "teacherName": "曹镇辉",
+        "teacherImg": "https:\/\/test.vipthink.cn\/uploads\/20190703\/070d22c492f92184d856a2eb549f2f2e.jpg",
+        "roomId": "test095786",
+        "channelKey": "",
+        "liveStatus": 3,
+        "gameUrl": "https:\/\/test-cdn.vipthink.cn\/video\/class\/index.html?course=s2_oa2",
+        "host": "https:\/\/test.vipthink.cn",
+        "release": "official",
+        "logLevel": "off",
+        "courseType": 1,
+        "liveStudentList": [
+          {
+            "id": 21162080,
+            "name": "快d 落班",
+            "sex": 1,
+            "checkStatus": 2,
+            "headerImg": "https:\/\/test-1253622427.cos.ap-guangzhou.myqcloud.com\/app\/student\/normal\/21162080\/20190730\/ec25d47d173b7cc1c9fa1649bf304ac3.png",
+            "device_os": "Windows NT 10.0",
+            "device_name": "",
+            "leaveReason": "停留课堂时间小于15分钟,系统设置为请假",
+            "stayLiveTimeSecond": 0,
+            "stayLiveTimeStr": "0分钟"
+          }
+        ],
+        "uid": 222298,
+        "name": "凯威",
+        "sex": 1,
+        "headerImg": "https:\/\/test.vipthink.cn\/static\/admin\/img\/teacher.png",
+        "canEvaluate": 0,
+        "isEvaluate": 0,
+        "userType": "4000"
+      }
+    }
+    var cookies = {
+      cookies: {
+        'Session-Id': "t7u7o2v8ia04ka8lg5qklv7d55",
+        'klzz_ol_time': 1564555811,
+        'klzz_ol_token': "c42c93641d0adda0004e6aa0ab3c98f9599f3578",
+        'klzz_ol_uid': 222298
+      }
+    }
+
+    var resData = res.data
+    resData = resData.toJSONString()
+    console.log(res)
+    var gameData = Object.assign(resData, cookies)
+    console.log(res.data)
+    console.log(gameData)
+  </script>
+</body>
+
+</html>
