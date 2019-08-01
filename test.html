@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="author" content="dony">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>音频控制进度条</title>
+  <style type="text/css">
+    body,
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .m-main {
+      width: 100%;
+      height: 100%;
+      background: url(img/play_bg.png) 0 0 no-repeat;
+      -webkit-background-size: 100% 100%;
+      background-size: 100% 100%;
+      position: relative;
+    }
+
+    .m-main video {
+      display: none;
+    }
+
+    .m-main .player {
+      width: 100%;
+      height: 3.0rem;
+      position: relative;
+      bottom: 0px;
+    }
+
+    #js-play {
+      display: block;
+      width: 1.2rem;
+      height: 1.5rem;
+      margin: 0 auto;
+      color: #FFF;
+      text-align: center;
+      position: absolute;
+      left: 1.0rem;
+      top: 0;
+      display: block;
+    }
+
+    #js-pause {
+      display: block;
+      width: 1.2rem;
+      height: 1.5rem;
+      margin: 0 auto;
+      color: #FFF;
+      text-align: center;
+      position: absolute;
+      left: 1.0rem;
+      top: 0;
+      display: none;
+    }
+
+    #js-play #js-pause img {
+      width: 100%;
+    }
+
+    .m-main .play-box {
+      width: 100%;
+      margin-left: 3.8rem;
+    }
+
+    .m-main .play-box .left {
+      width: 25.6rem;
+      float: left;
+    }
+
+    .m-main .play-box .left p.timeline {
+      width: 20.0rem;
+      /*width: 70%;*/
+      height: 4px;
+      background-color: rgba(256, 256, 256, 0.6);
+      border-radius: 5px;
+      margin-top: 1.2rem;
+      margin-left: 3.0rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .m-main .play-box .left p.timeline span {
+      position: relative;
+      width: 0px;
+      height: 4px;
+      background-color: #ec6538;
+      border-radius: 5px;
+      display: block;
+      -webkit-transition: width ease-out 0.3s;
+      -o-transition: width ease-out 0.3s;
+      transition: width ease-out 0.3s;
+    }
+
+    .m-main .play-box .left p.timeline span:after {
+      content: "";
+      position: absolute;
+      top: -5px;
+      right: -0.6rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+      background-color: #ec6538;
+    }
+
+    .m-main .play-box .left div.info {
+      height: 26px;
+      font-size: 0.8rem;
+      color: #ffffff;
+      position: relative;
+      top: -0.65rem;
+      z-index: 1;
+
+    }
+
+    .m-main .play-box .left div.info .size {
+      float: left;
+      display: block;
+    }
+
+    .m-main .play-box .left div.info .timeshow {
+      float: right;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="m-main">
+    　　<div class="player">
+      　　　　<a href="javascript:void(0)" rel="external nofollow" rel="external nofollow" id="js-play">
+        　　　　　　<img src="img/play.png" />
+        　　　　</a>
+      　　　　<a href="javascript:void(0)" rel="external nofollow" rel="external nofollow" id="js-pause">
+        　　　　　　<img src="img/stop.png" />
+        　　　　</a>
+      　　　　<div class="play-box">
+        　　　　　　<div class="left">
+          　　　　　　　　<p class="timeline"><span style=""></span></p>
+          　　　　　　　　<div class="info">
+            　　　　　　　　　　<span class="size">00:00</span>
+            　　　　　　　　　　<span class="timeshow">00:00</span>
+            　　　　　　　　</div>
+          　　　　　　</div>
+        　　　　</div>
+      　　</div>
+    　　<div class="video">
+      　　　　<audio autoplay name="media" id="js-video">
+        　　　　　　
+        <source
+          src="http://chipsguide.snaillove.com/Public/Uploads/file_server_storage/Audio/2017/03/23/19/192_20003137.mp3"
+          type="video/mp4">
+        　　　　</audio>
+      　　</div>
+    　</div>
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      AudioControl('js-video')
+
+      function AudioControl(id) {
+        // 音频控制进度条
+        var audio = document.getElementById(id);
+        $(audio).on('loadedmetadata', function () {
+          audio.pause();
+          // 进度条控制
+          $(document).on('touchend', '.timeline', function (e) {
+            var x = e.originalEvent.changedTouches[0].clientX - this.offsetLeft;
+            var X = x < 0 ? 0 : x;
+            var W = $(this).width();
+            var place = X > W ? W : X;
+            audio.currentTime = (place / W).toFixed(2) * audio.duration
+            $(this).children().css({
+              width: (place / W).toFixed(2) * 100 + "%"
+            })
+          });
+          // 播放
+          $("#js-play").on('click', function () {
+            alert("播放")
+            $(this).hide();
+            $('#js-pause').show();
+            audio.play()
+          });
+          // 暂停
+          $('#js-pause').on('click', function () {
+            alert("暂停")
+            $(this).hide();
+            $('#js-play').show();
+            audio.pause()
+          });
+        })
+        setInterval(function () {
+          var currentTime = audio.currentTime;
+          setTimeShow(currentTime);
+        }, 1000);
+        // 设置播放时间
+        function setTimeShow(t) {
+          t = Math.floor(t);
+          var playTime = secondToMin(audio.currentTime);
+          $(".size").html(playTime);
+          $('.timeshow').text(secondToMin(audio.duration))
+          $('.timeline').children().css({
+            width: (t / audio.duration).toFixed(4) * 100 + "%"
+          })
+        }
+        // 计算时间
+        function secondToMin(s) {
+          var MM = Math.floor(s / 60);
+          var SS = s % 60;
+          if (MM < 10)
+            MM = "0" + MM;
+          if (SS < 10)
+            SS = "0" + SS;
+          var min = MM + ":" + SS;
+          return min.split('.')[0];
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
